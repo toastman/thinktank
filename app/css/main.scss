@@ -1,0 +1,67 @@
+@import "fontawesome";
+@import "variables";
+
+body{ background: #ffffff; margin:0; font-size: 14px; font-family: 'Calibri', 'Arial', sans-serif }
+.inline-block {display: inline-block}
+.no-wrap{ white-space: nowrap;}
+.expenses{
+  display: inline-block;
+  margin: 100px;
+  border-radius: 0.3em;
+  padding: 0.5em 1em;
+  border: 1px solid #ccc;
+  vertical-align: top;
+
+  a{
+    &, &:hover, &:active, &:focus{
+      text-decoration:none;
+    }
+  }
+
+
+  header{
+    position: relative;
+    padding-right: 2em;
+    &:after{
+      font-family: 'FontAwesome', sans-serif;
+      content: '\f026';
+      position: absolute;
+      top:50%;
+      right: 0;
+      transform: translateX(0) translateY(-50%);
+    }
+  }
+
+
+  &.open{
+    header{
+      &:after{ content: '\f025'; }
+    }
+
+    .expenses-dd { height: $expenses-dropdown-height }
+  }
+
+  table {
+    width: 100%; text-align: center; border-collapse: collapse;
+    td, th { border: 1px solid #000000; width: 50%; }
+    th{ padding: 1em 0 0.5em;}
+
+  }
+  header { font-size: 1.5em; cursor: pointer }
+
+  .expenses-dd  { overflow: hidden; height: 0; transition: height 0.5s linear; position: relative}
+  .expenses-dd-header { margin-top: $expenses-dd-header-margin-top; height: $expenses-dd-header-height;}
+  .expenses-dd-list {
+    overflow-x: hidden; overflow-y: auto;
+    width: 100%;
+    max-height: $expenses-dd-list-height;
+    margin-top: -1px; // remove double border
+    border-bottom: 1px solid #000000;
+  }
+  .expenses-dd-block-action-add{
+    input { width: 90%;}
+    input.expenses-price{ width: 5em}
+  }
+}
+
+

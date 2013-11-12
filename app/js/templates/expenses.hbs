@@ -1,0 +1,32 @@
+<div class="expenses open" id="{{id}}">
+  <header class="expenses-header">Expenses</header>
+  <div class="expenses-dd">
+    <table class="expenses-dd-header">
+      <tr>
+        <th>Name <i class="icon-caret-down"></i></th>
+        <th>Amount</th>
+      </tr>
+    </table>
+    <div class="expenses-dd-list" data-list-rows="5">
+      <table>
+        {{#each list}}
+          {{>expenses-list-single}}
+        {{/each}}
+      </table>
+    </div>
+    <table class="expenses-dd-block-action-add">
+      <tr>
+        <td>
+          <input type="text" name="expenses-name">
+        </td>
+        <td class="no-wrap">
+          $
+          <input type="text" class="expenses-price" name="expenses-price" pattern="\d*">
+          <a href="#" class="btn-expenses-add">
+            <i class="icon-plus"></i>
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+$expenses-dd-header-margin-top:1em;
+$expenses-dd-header-height:3em;
+
+$expenses-dd-list-top: $expenses-dd-header-margin-top + $expenses-dd-header-height;
+$expenses-dd-list-height:7em;
+
+$expenses-dd-block-action-add-top:$expenses-dd-list-height+$expenses-dd-list-top;
+
+$expenses-dropdown-height:$expenses-dd-block-action-add-top+5em;

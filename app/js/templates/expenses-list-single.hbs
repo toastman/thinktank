@@ -1,0 +1,14 @@
+{{#if name}}
+  <tr>
+    <td>{{name}}</td>
+    <td>
+      {{price}}
+      <a href="javascript:void(0)" class="btn-expenses-remove" data-id="{{id}}">&times;</a>
+    </td>
+  </tr>
+{{else}}
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+{{/if}}
