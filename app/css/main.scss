@@ -62,6 +62,24 @@ body{ background: #ffffff; margin:0; font-size: 14px; font-family: 'Calibri', 'A
     input { width: 90%;}
     input.expenses-price{ width: 5em}
   }
+
+  .sort-by{
+    &:after{
+      font-family: 'FontAwesome';
+      content: '\f023';
+    }
+    &.active:after{content: '\f024';}
+  }
+  .expenses-total-container{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .expenses-total{
+    &:before{
+      content: '$';
+    }
+  }
 }
 
 

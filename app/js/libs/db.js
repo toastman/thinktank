@@ -128,6 +128,7 @@ thinkTank.db = {
             if (!!cursor == false) {
               return (options.callbackOnSuccess ? options.callbackOnSuccess(dbData) : false);
             } else {
+//              console.log('cursor.value: ', JSON.parse(cursor.value));
               cursor.value.id = cursor.key;
               dbData.push(cursor.value);
               cursor.continue();

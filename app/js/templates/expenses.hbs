@@ -3,17 +3,19 @@
   <div class="expenses-dd">
     <table class="expenses-dd-header">
       <tr>
-        <th>Name <i class="icon-caret-down"></i></th>
-        <th>Amount</th>
+        <th>
+          <a href="javascript:void(0)" class="sort-by" data-sort-by="name">
+            Name
+          </a>
+        </th>
+        <th>
+          <a href="javascript:void(0)" class="sort-by" data-sort-by="price">
+            Amount
+          </a>
+        </th>
       </tr>
     </table>
-    <div class="expenses-dd-list" data-list-rows="5">
-      <table>
-        {{#each list}}
-          {{>expenses-list-single}}
-        {{/each}}
-      </table>
-    </div>
+    {{>expenses-list}}
     <table class="expenses-dd-block-action-add">
       <tr>
         <td>
@@ -25,6 +27,12 @@
           <a href="#" class="btn-expenses-add">
             <i class="icon-plus"></i>
           </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>
+          <span class="expenses-total"></span>
         </td>
       </tr>
     </table>
