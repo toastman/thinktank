@@ -79,27 +79,24 @@ thinkTank.Expenses = function(options){
           }
         }
       }
+      if(data.name && data.price){
+        // Add data to IndexedDb
+        thinkTank.db.add({
+          objStoreName      : 'expenses2',
+          data:data,
+          callbackOnSuccess : function(e){
+            var htmlString
+            // Id is a db track number
+            data.id = e.target.result;
+            htmlString = thinkTank.JST[defaults.templateListSingleEl](data);
 
-      // Add data to IndexedDb
-      thinkTank.db.add({
-        objStoreName      : 'expenses2',
-        data:data,
-        callbackOnSuccess : function(e){
-          //var wrapper = document.createElement('div');
-          //wrapper.innerHtml = thinkTank.JST[defaults.templateListSingleEl](data);
-          //el.querySelector(defaults.selectorList).appendChild(wrapper.firstChild);
-
-          // Workaround for strange bug above
-          var tr = document.createElement('tr'),
-              colName = tr.appendChild(document.createElement('td')),
-              colPrice = tr.appendChild(document.createElement('td'));
-
-          colName.innerHTML = data.name;
-          colPrice.innerHTML = data.price;
-          targetElem.querySelector(defaults.selectorList).appendChild(tr);
-        },
-        callbackOnError : function(e){ console.warn("Error: ", e); }
-      });
+            targetElem.querySelector(defaults.selectorList).insertAdjacentHTML('beforeend', htmlString);
+          },
+          callbackOnError : function(e){ console.warn("Error: ", e); }
+        });
+      }else{
+        thinkTank.Notification.show('Please fill in all fields', {icon:'img/notification.png'});
+      }
     }
   };
 

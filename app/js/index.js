@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
     objStoreName      : 'expenses2'
   });
 
+//  thinkTank.db.clear({ objStoreName : 'expenses2' });
+
   // Get data from db
   thinkTank.db.get({
     objStoreName      : 'expenses2',

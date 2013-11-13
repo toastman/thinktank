@@ -81,12 +81,19 @@ thinkTank.db = {
     this.database ? addFunction() : document.addEventListener('dbConnected', addFunction, false);
   },
 
+  /*
+   * options:{
+   *   objStoreName      : ''
+   *   callbackOnSuccess : function(){}
+   *   callbackOnError   : function(){}
+   * }
+   * */
   delete: function (options) {
     var self = this,
         deleteFunction = function () {
           var transaction = self.database.transaction([options.objStoreName], "readwrite"),
               store = transaction.objectStore(options.objStoreName),
-              request = store.delete(options.id);
+              request = store.delete(parseInt(options.id));
 
           request.onsuccess = function (e) {
             return options.callbackOnSuccess ? options.callbackOnSuccess(e) : false;
@@ -130,5 +137,28 @@ thinkTank.db = {
         };
 
     this.database ? getFunction() : document.addEventListener('dbConnected', getFunction, false);
+  },
+
+  /*
+   * options:{
+   *   objStoreName      : ''
+   *   callbackOnSuccess : function(){}
+   *   callbackOnError   : function(){}
+   * }
+   * */
+  clear:function(options){
+    var self = this,
+        clearFunction = function(){
+          var transaction = self.database.transaction([options.objStoreName], "readwrite"),
+              store = transaction.objectStore(options.objStoreName),
+              request = store.clear();
+
+          request.onsuccess = function(e){
+            console.log('objectStore ', options.objStoreName, ' is cleared.');
+            return options.callbackOnSuccess ? options.callbackOnSuccess(e) : false;
+          }
+        };
+
+    this.database ? clearFunction() : document.addEventListener('dbConnected', clearFunction, false);
   }
 };
